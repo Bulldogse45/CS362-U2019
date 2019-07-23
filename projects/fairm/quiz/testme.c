@@ -5,26 +5,21 @@
 
 char inputChar()
 {
-    // TODO: rewrite this function
-    char testedChars[13] = {'[', '(', '{', ' ', 'a', 'x', '}', ')', ']', 'b', 'c', 'd', 'e'};
+    char testedChars[13] = {'[', '(', '{', ' ', 'a', 'x', '}', ')', ']', 'b', '\0', 127, 28};
     char n = testedChars[rand() % 14];
     return n;
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
-    char *s = NULL;
     char randString[8];
     char validChars[7] = {'r', 'e','s', 't', '\0', 'n', 'o' };
     int randLength = 7;
-    s = malloc(sizeof(char) * (randLength +1));
     int i;
     for(i=0; i< randLength; i++)
-      randString[i] = validChars[rand() % 7];
+      randString[i] = validChars[rand() % 7]; 
     randString[i] = '\0';
-    strcpy(s, randString);
-    return s;
+    return randString;
 }
 
 void testme()
