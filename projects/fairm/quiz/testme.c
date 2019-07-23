@@ -13,7 +13,7 @@ char inputChar()
 char *inputString()
 {
     char randString[8];
-    char validChars[7] = {'r', 'e','s', 't', '\0', 'n', 'o' };
+    char validChars[7] = {'r', 'e','s', 't', '\0', 127, 28 };
     int randLength = 7;
     int i;
     for(i=0; i< randLength; i++)
