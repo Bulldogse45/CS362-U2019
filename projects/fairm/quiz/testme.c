@@ -5,19 +5,19 @@
 
 char inputChar()
 {
-    char testedChars[13] = {'[', '(', '{', ' ', 'a', 'x', '}', ')', ']', 'b', '\0', 127, 28};
-    char n = testedChars[rand() % 14];
+    char testedChars[15] = {'[', '(', '{', ' ', 'a', 'x', '}', ')', ']', 'A', '\0', 127, 28, '1', 'X'};
+    char n = testedChars[rand() % 15];
     return n;
 }
 
 char *inputString()
 {
-    char randString[8];
-    char validChars[7] = {'r', 'e','s', 't', '\0', 127, 28 };
-    int randLength = 7;
+    char randString[9];
+    char validChars[12] = {'r', 'e','s', 't', '\0', 127, 28, 'E', 'R', 'S', 'T', '2' };
+    int randLength = 8;
     int i;
     for(i=0; i< randLength; i++)
-      randString[i] = validChars[rand() % 7]; 
+      randString[i] = validChars[rand() % 12]; 
     randString[i] = '\0';
     return randString;
 }
