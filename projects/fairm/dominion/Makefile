@@ -38,7 +38,7 @@ randomtestcard2: randomtestcard2.c dominion.o rngs.o
 randomtestcard3: randomtestcard3.c dominion.o rngs.o
 	gcc -o randomtestcard3 -g  randomtestcard3.c dominion.o rngs.o $(CFLAGS)
 
-unittestresults: all randomtestcard1 randomtestcard1 randomtestcard1
+randomtestresults: all randomtestcard1 randomtestcard1 randomtestcard1
 	./randomtestcard1&> unittestresults.out
 	gcov dominion.c -b -f >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out

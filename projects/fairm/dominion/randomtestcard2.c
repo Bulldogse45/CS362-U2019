@@ -19,8 +19,6 @@ void assertNotEqual(int, int);
 void assertEqual(int, int);
 
 int main() {
-  int seed = 1234;
-  int numPlayers = 2;
   int currentPlayer = 0;
   int nextPlayer = 1;
   int tributeRevealedCards[2] = {-1, -1};
@@ -33,8 +31,10 @@ int main() {
   printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
   // ----------- TEST 1:  --------------
 
-  for(int i = 0; i < 3; i++){
-    initializeGame(numPlayers, k, seed, &originalState);
+  for(int i = 0; i < 3000; i++){
+    int seed = randInt(1,10000);
+    int playerCount = randInt(2,4);
+    initializeGame(playerCount, k, seed, &originalState);
     memcpy(&state, &originalState, sizeof(struct gameState));
 
     printf("TEST %d: \n", i);
@@ -47,12 +47,16 @@ int main() {
       state.discard[nextPlayer][j] = randCard(k, 10); //duchy
     }
     playTribute(&state, currentPlayer, nextPlayer, tributeRevealedCards);
-    assertNotEqual(-1, tributeRevealedCards[0]);
-    assertNotEqual(-1, tributeRevealedCards[1]);
-    assertEqual(originalState.deckCount[nextPlayer] - 2, state.deckCount[nextPlayer]); 
-    assertEqual(originalState.coins + 2, state.coins); 
-    assertEqual(originalState.handCount[currentPlayer] + 2, state.handCount[currentPlayer]); 
-
+    if(state.deckCount[nextPlayer] + state.discardCount[nextPlayer] > 1){
+      assertNotEqual(-1, tributeRevealedCards[0]);
+      assertNotEqual(-1, tributeRevealedCards[1]);
+    } else if(state.deckCount[nextPlayer] + state.discardCount[nextPlayer] == 1){
+      assertNotEqual(-1, tributeRevealedCards[0]);
+      assertEqual(-1, tributeRevealedCards[1]);
+    }
+    // assertEqual(originalState.deckCount[nextPlayer] - 2, state.deckCount[nextPlayer]); 
+    // assertEqual(originalState.coins + 2, state.coins); 
+    // assertEqual(originalState.handCount[currentPlayer] + 2, state.handCount[currentPlayer]); 
   }
  
   printf("\n >>>>> Random Test SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);

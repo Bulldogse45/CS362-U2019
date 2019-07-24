@@ -1208,11 +1208,11 @@ void playTribute(struct gameState *state, int currentPlayer, int nextPlayer, int
       shuffle(nextPlayer,state);//Shuffle the deck
     } 
     tributeRevealedCards[0] = state->deck[nextPlayer][state->deckCount[nextPlayer]-1];
-    state->deck[nextPlayer][--state->deckCount[nextPlayer]] = -1;
+    state->deck[nextPlayer][state->deckCount[nextPlayer]--] = -1;
     state->deckCount[nextPlayer]--;
-    tributeRevealedCards[1] = state->deck[currentPlayer][state->deckCount[currentPlayer]-1];
-    state->deck[currentPlayer][state->deckCount[currentPlayer]--] = -1;
-    state->deckCount[currentPlayer]--;
+    tributeRevealedCards[1] = state->deck[nextPlayer][state->deckCount[nextPlayer]-1];
+    state->deck[nextPlayer][state->deckCount[nextPlayer]--] = -1;
+    state->deckCount[nextPlayer]--;
   }    
 
   if (tributeRevealedCards[0] == tributeRevealedCards[1]){//If we have a duplicate card, just drop one 
