@@ -1102,7 +1102,7 @@ void playMinion(struct gameState *state, int currentPlayer, int choice1, int cho
   //discard card from hand
   discardCard(handPos, currentPlayer, state, 0);
   
-  if (choice2)		//+2 coins
+  if (choice1)		//+2 coins
   {
     state->coins = state->coins + 2;
   } else if (choice2)	{	//discard hand, redraw 4, other players with 5+ cards discard hand and draw 4

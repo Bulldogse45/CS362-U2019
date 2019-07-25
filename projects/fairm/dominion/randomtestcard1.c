@@ -1,7 +1,7 @@
 /********************************************************************* 
  ** Name: RandomTestCard3
  ** Author: Matthew Fair
- ** Date: 7-23-2019
+ ** Date: 7-24-2019
  ** Description: Random Testing for tribute
  *********************************************************************/ 
 
@@ -9,62 +9,36 @@
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
+#include "randMethods.c"
 #include <assert.h>
 #include "rngs.h"
 #include <stdlib.h>
 
 #define TESTCARD "playBaron"
-void assertNotEqual(int, int);
-void assertEqual(int, int);
 
 int main() {
-  int seed = 1234;
-  int choice1 = 0;
-  int numPlayers = 2;
   int currentPlayer = 0;
   struct gameState state, originalState;
-  int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
-      sea_hag, tribute, smithy, council_room};
-
-  // initialize a game state and player cards
-  initializeGame(numPlayers, k, seed, &originalState);
 
   printf("----------------- Testing TESTCARD: %s ----------------\n", TESTCARD);
   // ----------- TEST 1: Choose to discard draws an estate card --------------
-  printf("TEST 1: Choose to discard draws an estate card\n");
+  for(int i = 0; i < 6000; i++){
+    printf("TEST %d \n", i);
+    int choice1 = randInt(0,1);
+    int seed = randInt(1,10000);
+    int k[10];
+    setDeck(k, 10);
+    int playerCount = randInt(2,4);
+    initializeGame(playerCount, k, seed, &originalState);
+    memcpy(&state, &originalState, sizeof(struct gameState));
+    state.supplyCount[estate] = randInt(0,8);
 
-  memcpy(&state, &originalState, sizeof(struct gameState));
-  playBaron(&state, currentPlayer, choice1);
+    playBaron(&state, currentPlayer, choice1);
+    // assertEqual(originalState.numBuys + 1, state.numBuys);
+    // assertEqual(originalState.supplyCount[estate] - 1, state.supplyCount[estate]);
+    // assertEqual(state.discard[currentPlayer][state.discardCount[currentPlayer]-1], estate);
+  }
 
-  assertEqual(originalState.numBuys + 1, state.numBuys);
-  assertEqual(originalState.supplyCount[estate] - 1, state.supplyCount[estate]);
-  assertEqual(state.discard[currentPlayer][state.discardCount[currentPlayer]-1], estate);
-
-  // ----------- TEST 2: --------------
-  printf("TEST 2: \n");
-
-  memcpy(&state, &originalState, sizeof(struct gameState));
-  choice1 = 1;
-  state.hand[currentPlayer][3] = estate;
-  playBaron(&state, currentPlayer, choice1);
-
-  assertEqual(originalState.numBuys + 1, state.numBuys);
-  assertEqual(originalState.coins + 4, state.coins);
-
-  printf("\n >>>>> Unit Test 5 SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);
+  printf("\n >>>>> Random Card Test 1 SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);
   return 0;
-}
-
-void assertNotEqual(int a, int b){
-  if(a != b)
-    printf("\n >>>>> SUCCESS: %d != %d <<<<<\n\n", a, b);
-  else
-    printf("\n >>>>> Failure: %d = %d <<<<<\n\n", a, b);
-}
-
-void assertEqual(int a, int b){
-  if(a == b)
-    printf("\n >>>>> SUCCESS: %d = %d <<<<<\n\n", a, b);
-  else
-    printf("\n >>>>> Failure: %d != %d <<<<<\n\n", a, b);
 }

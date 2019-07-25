@@ -57,4 +57,7 @@ player: player.c interface.o
 all: playdom player 
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe *.gcov *.gcda *.gcno *.so *.out randomtestcard1 randomtestcard2 randomtestcard3 testDrawCard testDrawCard.exe
+
+clean_mac:
+	rm -rf *.dSYM 

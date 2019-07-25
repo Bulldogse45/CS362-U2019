@@ -1,7 +1,7 @@
 /********************************************************************* 
  ** Name: RandomTestCard3
  ** Author: Matthew Fair
- ** Date: 7-23-2019
+ ** Date: 7-24-2019
  ** Description: Random Testing for tribute
  *********************************************************************/ 
 
@@ -15,16 +15,12 @@
 #include <stdlib.h>
 
 #define TESTCARD "Tribute"
-void assertNotEqual(int, int);
-void assertEqual(int, int);
 
 int main() {
   int currentPlayer = 0;
   int nextPlayer = 1;
   int tributeRevealedCards[2] = {-1, -1};
   struct gameState state, originalState;
-  int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
-      sea_hag, tribute, smithy, council_room};
 
   // initialize a game state and player cards
 
@@ -33,6 +29,8 @@ int main() {
 
   for(int i = 0; i < 3000; i++){
     int seed = randInt(1,10000);
+    int k[10];
+    setDeck(k, 10);
     int playerCount = randInt(2,4);
     initializeGame(playerCount, k, seed, &originalState);
     memcpy(&state, &originalState, sizeof(struct gameState));
@@ -62,14 +60,3 @@ int main() {
   printf("\n >>>>> Random Test SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);
   return 0;
 }
-
-void assertNotEqual(int a, int b){
-  if(a == b)
-    printf("\n >>>>> Failure: %d = %d <<<<<\n\n", a, b);
-}
-
-void assertEqual(int a, int b){
-  if(a != b)
-    printf("\n >>>>> Failure: %d != %d <<<<<\n\n", a, b);
-}
-
