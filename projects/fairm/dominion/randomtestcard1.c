@@ -33,6 +33,7 @@ int main() {
     state.supplyCount[estate] = randInt(0,8);
 
     playBaron(&state, currentPlayer, choice1);
+    assertEqual(originalState.numBuys+1, state.numBuys);
   }
 
   printf("\n >>>>> Random Card Test 1 SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);
