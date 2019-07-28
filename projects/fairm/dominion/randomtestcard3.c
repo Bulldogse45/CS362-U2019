@@ -33,6 +33,12 @@ int main() {
     memcpy(&state, &originalState, sizeof(struct gameState));
     int handPos = randInt(0,state.handCount[currentPlayer]);
 
+    for(int j = 1; j < state.numPlayers; j++){
+      state.handCount[j] = randInt(2, 7);
+      for(int m=0; m < state.handCount[j]; m++){
+        state.hand[j][m] = randCard(k, 10); // gold
+      }
+    }
     playMinion(&state, currentPlayer, choice1, choice2, handPos);
 
     assertEqual(originalState.numActions + 1, state.numActions);

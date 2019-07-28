@@ -1,8 +1,8 @@
 /********************************************************************* 
- ** Name: RandomTestCard3
+ ** Name: RandomTestCard1
  ** Author: Matthew Fair
  ** Date: 7-27-2019
- ** Description: Random Testing for tribute
+ ** Description: Random Testing for Baron
  *********************************************************************/ 
 
 #include "dominion.h"
@@ -33,9 +33,6 @@ int main() {
     state.supplyCount[estate] = randInt(0,8);
 
     playBaron(&state, currentPlayer, choice1);
-    // assertEqual(originalState.numBuys + 1, state.numBuys);
-    // assertEqual(originalState.supplyCount[estate] - 1, state.supplyCount[estate]);
-    // assertEqual(state.discard[currentPlayer][state.discardCount[currentPlayer]-1], estate);
   }
 
   printf("\n >>>>> Random Card Test 1 SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);
