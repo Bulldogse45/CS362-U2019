@@ -1,7 +1,7 @@
 /********************************************************************* 
  ** Name: RandomTestCard3
  ** Author: Matthew Fair
- ** Date: 7-24-2019
+ ** Date: 7-27-2019
  ** Description: Random Testing for tribute
  *********************************************************************/ 
 
@@ -23,7 +23,6 @@ int main() {
   printf("----------------- Testing TESTCARD: %s ----------------\n", TESTCARD);
   // ----------- TEST 1: Choose to discard draws an estate card --------------
   for(int i = 0; i < 6000; i++){
-    printf("TEST %d \n", i);
     int choice1 = randInt(0,1);
     int seed = randInt(1,10000);
     int k[10];

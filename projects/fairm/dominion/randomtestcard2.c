@@ -35,7 +35,6 @@ int main() {
     initializeGame(playerCount, k, seed, &originalState);
     memcpy(&state, &originalState, sizeof(struct gameState));
 
-    printf("TEST %d: \n", i);
     state.deckCount[nextPlayer] = randInt(0,2);
     state.discardCount[nextPlayer] = randInt(0,2);
     for(int i = 0; i < state.deckCount[nextPlayer]; i++){

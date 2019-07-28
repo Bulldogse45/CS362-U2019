@@ -23,7 +23,6 @@ int main() {
   printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
   // ----------- TEST 1: choice1--------------
   for(int i = 0; i < 10000; i++){
-    printf("TEST %d \n", i);
     int choice1 = randInt(0,1);
     int choice2 = randInt(0,1);
     int seed = randInt(1,10000);
