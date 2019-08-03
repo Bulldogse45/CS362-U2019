@@ -27,7 +27,7 @@ int main() {
 	printf("TEST 1: Choose to discard draws an estate card\n");
 
 	memcpy(&state, &originalState, sizeof(struct gameState));
-  playBaron(&state, currentPlayer, choice1);
+  baronCard(choice1, &state);
 
   assertEqual(originalState.numBuys + 1, state.numBuys);
   assertEqual(originalState.supplyCount[estate] - 1, state.supplyCount[estate]);
@@ -39,7 +39,7 @@ int main() {
 	memcpy(&state, &originalState, sizeof(struct gameState));
   choice1 = 1;
   state.hand[currentPlayer][3] = estate;
-  playBaron(&state, currentPlayer, choice1);
+  baronCard(choice1, &state);
 
   assertEqual(originalState.numBuys + 1, state.numBuys);
   assertEqual(originalState.coins + 4, state.coins);

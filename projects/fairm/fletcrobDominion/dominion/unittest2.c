@@ -28,7 +28,7 @@ int main() {
 	memcpy(&state, &originalState, sizeof(struct gameState));
 	choice1 = 2;
 	choice2 = 1;
-  playAmbassador(&state, currentPlayer, choice1, choice2, handPos);
+  ambassadorCard(choice1, choice2, &state, handPos);
 
   assertEqual(originalState.supplyCount[originalState.hand[currentPlayer][choice1]] + choice2, state.supplyCount[state.hand[currentPlayer][choice1]]);
 
@@ -37,7 +37,7 @@ int main() {
 
 	memcpy(&state, &originalState, sizeof(struct gameState));
 	choice2 = -3;
-  int val = playAmbassador(&state, currentPlayer, choice1, choice2, handPos);
+  int val = ambassadorCard(choice1, choice2, &state, handPos);
 
   assertEqual(val, -1);
 
@@ -46,7 +46,7 @@ int main() {
 
 	memcpy(&state, &originalState, sizeof(struct gameState));
 	choice2 = 3;
-  val = playAmbassador(&state, currentPlayer, choice1, choice2, handPos);
+  val = ambassadorCard(choice1, choice2, &state, handPos);
 
   assertEqual(val, -1);
   printf("\n >>>>> Unit Test 2 SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);

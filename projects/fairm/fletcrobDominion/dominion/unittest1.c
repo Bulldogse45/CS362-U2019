@@ -13,7 +13,6 @@ int main() {
   int handPos = 0, choice1 = 0, choice2 = 0;
   int seed = 1234;
   int numPlayers = 2;
-  int currentPlayer = 0;
   int nextPlayer = 1;
 	struct gameState state, originalState;
 	int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
@@ -28,7 +27,7 @@ int main() {
 
 	memcpy(&state, &originalState, sizeof(struct gameState));
 	choice1 = 1;
-  playMinion(&state, currentPlayer, choice1, choice2, handPos);
+  minionCard(choice1, choice2, &state, handPos);
 
   assertEqual(originalState.numActions + 1, state.numActions);
   assertEqual(originalState.coins + 2, state.coins);
@@ -43,7 +42,7 @@ int main() {
   drawCard(0, &state);
   for(; i < 6; i++)
     drawCard(nextPlayer, &state);
-  playMinion(&state, currentPlayer, choice1, choice2, handPos);
+  minionCard(choice1, choice2, &state, handPos);
 
   assertEqual(state.handCount[0], 4);
   assertEqual(state.handCount[1], 4);

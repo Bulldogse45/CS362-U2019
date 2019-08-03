@@ -17,7 +17,6 @@
 #define TESTCARD "playBaron"
 
 int main() {
-  int currentPlayer = 0;
   struct gameState state, originalState;
 
   printf("----------------- Testing TESTCARD: %s ----------------\n", TESTCARD);
@@ -32,7 +31,7 @@ int main() {
     memcpy(&state, &originalState, sizeof(struct gameState));
     state.supplyCount[estate] = randInt(0,8);
 
-    playBaron(&state, currentPlayer, choice1);
+    baronCard(choice1, &state);
     assertEqual(originalState.numBuys+1, state.numBuys);
   }
 

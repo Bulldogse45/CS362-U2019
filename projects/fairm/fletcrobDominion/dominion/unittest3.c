@@ -30,7 +30,7 @@ int main() {
 	memcpy(&state, &originalState, sizeof(struct gameState));
   state.deck[nextPlayer][state.deckCount[nextPlayer]-1] = 6; // gold
   state.deck[nextPlayer][state.deckCount[nextPlayer]-2] = 2; //duchy
-  playTribute(&state, currentPlayer, nextPlayer, tributeRevealedCards);
+  tributeCard(&state);
   assertNotEqual(-1, tributeRevealedCards[0]);
   assertNotEqual(-1, tributeRevealedCards[1]);
   assertEqual(originalState.deckCount[nextPlayer] - 2, state.deckCount[nextPlayer]); 
@@ -48,7 +48,7 @@ int main() {
   }
 
   state.deck[nextPlayer][state.deckCount[nextPlayer]-1] = 16; // great hall
-  playTribute(&state, currentPlayer, nextPlayer, tributeRevealedCards);
+  tributeCard(&state);
   assertNotEqual(-1, tributeRevealedCards[0]);
   assertEqual(-1, tributeRevealedCards[1]);
   assertEqual(originalState.numActions + 2, state.numActions); 

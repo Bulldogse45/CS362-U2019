@@ -39,7 +39,7 @@ int main() {
         state.hand[j][m] = randCard(k, 10); // gold
       }
     }
-    playMinion(&state, currentPlayer, choice1, choice2, handPos);
+    minionCard(choice1, choice2, &state, handPos);
 
     assertEqual(originalState.numActions + 1, state.numActions);
     if(choice1 ==1)

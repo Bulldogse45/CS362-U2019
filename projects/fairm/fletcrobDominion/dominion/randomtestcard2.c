@@ -17,7 +17,6 @@
 #define TESTCARD "Tribute"
 
 int main() {
-  int currentPlayer = 0;
   int nextPlayer = 1;
   int tributeRevealedCards[2] = {-1, -1};
   struct gameState state, originalState;
@@ -43,7 +42,7 @@ int main() {
     for(int j = 0; j < state.discardCount[nextPlayer]; j++){
       state.discard[nextPlayer][j] = randCard(k, 10); //duchy
     }
-    playTribute(&state, currentPlayer, nextPlayer, tributeRevealedCards);
+    tributeCard(&state);
     if(state.deckCount[nextPlayer] + state.discardCount[nextPlayer] > 1){
       assertNotEqual(-1, tributeRevealedCards[0]);
       assertNotEqual(-1, tributeRevealedCards[1]);

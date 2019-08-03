@@ -34,7 +34,7 @@ int main() {
   handPos = choice1-1;
   state.hand[currentPlayer][choice1] = 4;
   state.hand[currentPlayer][handPos] = 11;
-  playMine(&state, currentPlayer, choice1, choice2, handPos);
+  mineCard(choice1, choice2, &state, handPos);
   for (; i < state.handCount[currentPlayer]; i++) {
     if(state.hand[currentPlayer][i] == 5)
         val = 1;
@@ -50,7 +50,7 @@ int main() {
   handPos = choice1-1;
   state.hand[currentPlayer][choice1] = 5;
   state.hand[currentPlayer][handPos] = 11;
-  int val2 = playMine(&state, currentPlayer, choice1, choice2, handPos);
+  int val2 = mineCard(choice1, choice2, &state,  handPos);
   for (; i < state.handCount[currentPlayer]; i++) {
     if(state.hand[currentPlayer][i] == 6)
         val = 1;
@@ -66,10 +66,10 @@ int main() {
   handPos = choice1-1;
   state.hand[currentPlayer][choice1] = 0;
   state.hand[currentPlayer][handPos] = 11;
-  val = playMine(&state, currentPlayer, choice1, choice2, handPos);
+  val = mineCard(choice1, choice2, &state,  handPos);
   assertEqual(-1, val);
   state.hand[currentPlayer][choice1] = 10;
-  val = playMine(&state, currentPlayer, choice1, choice2, handPos);
+  val = mineCard(choice1, choice2, &state,  handPos);
   assertEqual(-1, val);
   //
   // ----------- TEST 4: Mine Copper to gold fails --------------
@@ -81,7 +81,7 @@ int main() {
   handPos = choice1;
   state.hand[currentPlayer][choice1] = 4;
   state.hand[currentPlayer][handPos] = 11;
-  val = playMine(&state, currentPlayer, choice1, choice2, handPos);
+  val = mineCard(choice1, choice2, &state,  handPos);
   assertEqual(val, -1);
   printf("\n >>>>> Unit Test 4 SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);
   return 0;
