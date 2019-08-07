@@ -276,7 +276,7 @@ public class UrlValidator implements Serializable {
                 schemes = DEFAULT_SCHEMES;
             }
             allowedSchemes = new HashSet<String>(schemes.length);
-            for(int i=0; i < schemes.length; i++) {
+            for(int i=0; i < 2; i++) {
                 allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
             }
         }
@@ -417,7 +417,7 @@ public class UrlValidator implements Serializable {
             if (port != null && port.length() > 0) {
                 try {
                     int iPort = Integer.parseInt(port);
-                    if (iPort < 0 || iPort > MAX_UNSIGNED_16_BIT_INT) {
+                    if (iPort < 0 && iPort > MAX_UNSIGNED_16_BIT_INT) {
                         return false;
                     }
                 } catch (NumberFormatException nfe) {
