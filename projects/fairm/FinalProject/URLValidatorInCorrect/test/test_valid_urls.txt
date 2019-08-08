@@ -8,7 +8,9 @@ http://example.com/?board=border&bit=advertisement
 http://www.example.net/?bead=arm&base=bike
 http://example.org/branch/brass
 http://example.com/
-https://www.example.com/
+https://www.example.com:20
+https://www.example.com:65536
+https://www.example.com:0
 https://www.example.edu/afterthought?bikes=boy&board=air
 http://authority.example.net/book/branch.php
 http://example.com/battle
