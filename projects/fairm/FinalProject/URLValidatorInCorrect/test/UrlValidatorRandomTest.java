@@ -1,7 +1,7 @@
 import junit.framework.TestCase;
 import java.util.Random;
 
-public class UrlValidatorTest extends TestCase {
+public class UrlValidatorRandomTest extends TestCase {
 
    // @org.junit.Test
     private final boolean printStatus = false; //use the framework in github
@@ -9,7 +9,7 @@ public class UrlValidatorTest extends TestCase {
 
     private static final int TESTS = 1000;
 
-    public UrlValidatorTest(String testName) {
+    public UrlValidatorRandomTest(String testName) {
         super(testName);
     }
 

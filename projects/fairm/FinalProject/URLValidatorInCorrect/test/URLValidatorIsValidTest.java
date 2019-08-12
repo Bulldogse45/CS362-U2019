@@ -1,7 +1,5 @@
-package test;
 
 import static org.junit.Assert.*;
-import uRLValidatorInCorrect.UrlValidator;
 //https://stackoverflow.com/questions/9259411/what-is-the-best-way-to-iterate-over-the-lines-of-a-java-string
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,7 +24,7 @@ public class URLValidatorIsValidTest {
 		UrlValidator uvi=new UrlValidator();
 		// https://www.randomlists.com/urls for urls
 		
-		BufferedReader invalidUrlList = new BufferedReader(new FileReader("test\\test\\test_invalid_urls.txt"));
+		BufferedReader invalidUrlList = new BufferedReader(new FileReader("test\\test_invalid_urls.txt"));
 		String nonUrl=null;
 		while( (nonUrl=invalidUrlList.readLine()) != null )
 		{
@@ -36,7 +34,7 @@ public class URLValidatorIsValidTest {
 		}
 		invalidUrlList.close();
 		
-		BufferedReader urlList = new BufferedReader(new FileReader("test\\test\\test_valid_urls.txt"));
+		BufferedReader urlList = new BufferedReader(new FileReader("test\\test_valid_urls.txt"));
 		String url=null;
 		while( (url=urlList.readLine()) != null )
 		{
